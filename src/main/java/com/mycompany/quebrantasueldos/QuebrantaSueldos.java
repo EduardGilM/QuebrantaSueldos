@@ -4,6 +4,7 @@
 
 package com.mycompany.quebrantasueldos;
 
+import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
 import com.mycompany.quebrantasueldos.Vista.QuebrantaSueldosVista;
 
 /**
@@ -13,7 +14,9 @@ import com.mycompany.quebrantasueldos.Vista.QuebrantaSueldosVista;
 public class QuebrantaSueldos {
 
     public static void main(String[] args) {
-        QuebrantaSueldosVista view = new QuebrantaSueldosVista();
-        view.setVisible(true);
+
+        QuebrantaSueldosModelo modelo = new QuebrantaSueldosModelo();
+        QuebrantaSueldosVista view = new QuebrantaSueldosVista(modelo);
+        
     }
 }
