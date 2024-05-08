@@ -14,6 +14,7 @@ public class JuegoVista extends JFrame{
     private EstadoPanel estadoPanel;
     private TragaPerrasMenuBar menu;
     private TirarPanel tirarPanel;
+    private InfoJuego infoJuego;
     
     public JuegoVista(QuebrantaSueldosModelo modelo){
         super("Ventanta de Juego");
@@ -24,11 +25,12 @@ public class JuegoVista extends JFrame{
         //Paneles
         estadoPanel = new EstadoPanel();
         menu = new TragaPerrasMenuBar();
-        tirarPanel = new TirarPanel(modelo);
         
         this.setJMenuBar(menu);
-        add(tirarPanel,BorderLayout.CENTER);
         add(estadoPanel,BorderLayout.SOUTH);
+
+        infoJuego = new InfoJuego(modelo);
+        this.add(infoJuego, BorderLayout.CENTER);
         
         
         
@@ -41,5 +43,20 @@ public class JuegoVista extends JFrame{
     
     public void cerrarVentana(){
         this.dispose();
+    }
+
+    public class InfoJuego extends JPanel {
+        public InfoJuego(QuebrantaSueldosModelo modelo) {
+            tirarPanel = new TirarPanel(modelo);
+        
+        add(tirarPanel,BorderLayout.CENTER);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Image img = new ImageIcon("assets/PantallaJuego.png").getImage();
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 }
