@@ -1,26 +1,50 @@
 package com.mycompany.quebrantasueldos.Vista;
 
 import javax.swing.*;
+
+import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
+
 import java.awt.*;
 
 public class QuebrantaSueldosVista extends JFrame {
 
     private ConfiguracionVista configuracion;
-    private RankingVista ranking;
-    private AyudaVista ayuda;
+    private JuegoVista juegoVista;
+
+
+    private QuebrantaSueldosModelo model;
     
-    public QuebrantaSueldosVista() {
-        //configuracion = new ConfiguracionVista();
-
+    public QuebrantaSueldosVista(QuebrantaSueldosModelo modelo) {
+        
         this.setLayout(new BorderLayout());
-        //this.add(configuracion, BorderLayout.CENTER);
+        this.model = modelo;
+        
+        configuracion = new ConfiguracionVista();
+        juegoVista = new JuegoVista(model);
+        
 
-        ranking = new RankingVista();
-        //this.add(ranking, BorderLayout.CENTER);
-
-        ayuda = new AyudaVista();
-        this.add(ayuda, BorderLayout.CENTER);
-
+        
+        
+        //Ranking
+        //Ayuda
     }  
-
+    
+    //Funcionces de Ventana de Juego
+    public void abrirVentanaJuego(){
+        juegoVista.abrirVentana();
+    }
+    
+    public void cerrarVentanaJuego(){
+        if(juegoVista!=null)
+        juegoVista.cerrarVentana();
+    }
+    
+    
+    //Funcioens de Configuración
+    
+    
+    //Vetana Ranking
+    
+    
+    //Ayuda
 }
