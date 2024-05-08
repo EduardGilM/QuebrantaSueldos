@@ -10,7 +10,8 @@ public class QuebrantaSueldosVista extends JFrame {
 
     private ConfiguracionVista configuracion;
     private JuegoVista juegoVista;
-
+    private RankingVista ranking;
+    private AyudaVista ayuda;
 
     private QuebrantaSueldosModelo model;
     
@@ -22,11 +23,11 @@ public class QuebrantaSueldosVista extends JFrame {
         configuracion = new ConfiguracionVista();
         juegoVista = new JuegoVista(model);
         
-
-        
-        
         //Ranking
+        ranking = new RankingVista();
+
         //Ayuda
+        ayuda = new AyudaVista();
     }  
     
     //Funcionces de Ventana de Juego
