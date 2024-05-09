@@ -6,6 +6,7 @@ package com.mycompany.quebrantasueldos.Vista;
 
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
 
@@ -15,12 +16,16 @@ public class JuegoVista extends JFrame{
     private TragaPerrasMenuBar menu;
     private TirarPanel tirarPanel;
     private InfoJuego infoJuego;
+
+
+    QuebrantaSueldosModelo model;
     
     public JuegoVista(QuebrantaSueldosModelo modelo){
         super("Ventanta de Juego");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 800);
         this.setLayout(new BorderLayout());
+        this.model = modelo;
         
         //Paneles
         estadoPanel = new EstadoPanel();
@@ -29,7 +34,7 @@ public class JuegoVista extends JFrame{
         this.setJMenuBar(menu);
         add(estadoPanel,BorderLayout.SOUTH);
 
-        infoJuego = new InfoJuego(modelo);
+        infoJuego = new InfoJuego(model);
         this.add(infoJuego, BorderLayout.CENTER);
         
         
@@ -45,11 +50,18 @@ public class JuegoVista extends JFrame{
         this.dispose();
     }
 
+    
     public class InfoJuego extends JPanel {
+        QuebrantaSueldosModelo model;
         public InfoJuego(QuebrantaSueldosModelo modelo) {
-            tirarPanel = new TirarPanel(modelo);
-        
-        add(tirarPanel,BorderLayout.CENTER);
+            
+            this.setLayout(new GridLayout(1,1));
+            this.setBorder(new EmptyBorder(10, 10, 10, 10));
+            this.model = modelo;
+            
+            tirarPanel = new TirarPanel(model);
+            
+            this.add(tirarPanel);
         }
 
         @Override
@@ -59,4 +71,5 @@ public class JuegoVista extends JFrame{
             g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
         }
     }
+    
 }

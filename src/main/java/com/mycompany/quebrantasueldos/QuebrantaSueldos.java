@@ -16,6 +16,7 @@ public class QuebrantaSueldos {
     public static void main(String[] args) {
 
         QuebrantaSueldosModelo modelo = new QuebrantaSueldosModelo();
+        
         QuebrantaSueldosVista view = new QuebrantaSueldosVista(modelo);
         
     }

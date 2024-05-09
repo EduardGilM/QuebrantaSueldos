@@ -21,12 +21,15 @@ public class QuebrantaSueldosModelo {
     private String[] nombres = {"assets/imagen_00.jpg", "assets/imagen_01.jpg", "assets/imagen_02.jpg", "assets/imagen_03.jpg","assets/imagen_04.jpg"}; 
     
     
-    public void QuebrantaSueldosModelo() {
-    
+    public QuebrantaSueldosModelo() {
+        
+        System.out.println("Modelo creado");
+
         try {
-            imagen1 = ImageIO.read(new File(nombres[0]));
-            imagen2 = ImageIO.read(new File(nombres[0]));
-            imagen3 = ImageIO.read(new File(nombres[0]));
+            imagen1 = ImageIO.read(new File("assets/imagen_00.jpg"));
+            imagen2 = ImageIO.read(new File("assets/imagen_00.jpg"));
+            imagen3 = ImageIO.read(new File("assets/imagen_00.jpg"));
+            
         }
         catch (IOException e) {
             System.out.println("Problemas leyendo la imagen .");
@@ -35,16 +38,17 @@ public class QuebrantaSueldosModelo {
     
     }
     
-    public BufferedImage getImagen1() {
-        return imagen1;
-    }
-
-    public BufferedImage getImagen2() {
-        return imagen2;
-    }
-
-    public BufferedImage getImagen3() {
-        return imagen3;
+    public BufferedImage getImagen(int i) {
+        switch(i) {
+            case 0:
+                return imagen1;
+            case 1:
+                return imagen2;
+            case 2:
+                return imagen3;
+            default:
+                return null;
+        }
     }
 
     public void setImagen1(BufferedImage imagen1) {
