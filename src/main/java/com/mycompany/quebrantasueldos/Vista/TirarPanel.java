@@ -12,6 +12,7 @@ import javax.swing.border.LineBorder;
 import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 
 public class TirarPanel extends JPanel{
@@ -31,13 +32,15 @@ public class TirarPanel extends JPanel{
         imagen3 = new ImagenPanel(modelo,2);
 
         JPanel pan = new JPanel();
-        pan.setLayout(new GridLayout(2,3));
+        pan.setLayout(new GridLayout(1,3));
         pan.add(imagen1);
         pan.add(imagen2);
         pan.add(imagen3);
+        /*
         pan.add(new JLabel(""));
         pan.add(new JLabel(""));
         pan.add(new JLabel(""));
+*/
         this.add(pan, BorderLayout.CENTER);
 
         jugar = new JButton("Jugar");
@@ -46,5 +49,19 @@ public class TirarPanel extends JPanel{
         jugar.setFont(new Font("Arial", Font.BOLD, 24));
         this.add(jugar, BorderLayout.SOUTH);
 
+    }
+
+    public void RepintarPanel1(){
+        imagen1.RepintarPanel();
+    }
+    public void RepintarPanel2(){
+        imagen2.RepintarPanel();
+    }
+    public void RepintarPanel3(){
+        imagen3.RepintarPanel();
+    }
+
+    public void SetActionListener(ActionListener listen){
+        jugar.addActionListener(listen);
     }
 }

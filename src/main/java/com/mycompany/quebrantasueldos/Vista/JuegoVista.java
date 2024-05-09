@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 public class JuegoVista extends JFrame{
     private EstadoPanel estadoPanel;
     private TragaPerrasMenuBar menu;
@@ -41,7 +42,7 @@ public class JuegoVista extends JFrame{
         
         this.setVisible(true);
     }
-    
+    //Juego
     public void abrirVentana(){
         this.setVisible(true);
     }
@@ -49,6 +50,21 @@ public class JuegoVista extends JFrame{
     public void cerrarVentana(){
         this.dispose();
     }
+    //Info Juego
+    public void RepintarPanel1(){
+        infoJuego.RepintarPanel1();
+    }
+    public void RepintarPanel2(){
+        infoJuego.RepintarPanel2();
+    }
+    public void RepintarPanel3(){
+        infoJuego.RepintarPanel3();
+    }
+    public void setActionListener(ActionListener a){
+        infoJuego.setActionListener(a);
+    }
+    //Estado Panel
+    
 
     
     public class InfoJuego extends JPanel {
@@ -58,7 +74,7 @@ public class JuegoVista extends JFrame{
             this.setLayout(new GridLayout(1,1));
             this.setBorder(new EmptyBorder(10, 10, 10, 10));
             this.model = modelo;
-            
+
             tirarPanel = new TirarPanel(model);
             
             this.add(tirarPanel);
@@ -70,6 +86,19 @@ public class JuegoVista extends JFrame{
             Image img = new ImageIcon("assets/PantallaJuego.png").getImage();
             g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
         }
+
+        public void RepintarPanel1(){
+            tirarPanel.RepintarPanel1();
+        }
+        public void RepintarPanel2(){
+            tirarPanel.RepintarPanel2();
+        }
+        public void RepintarPanel3(){
+            tirarPanel.RepintarPanel3();
+        }
+        public void setActionListener(ActionListener a){
+            tirarPanel.SetActionListener(a);
+        }   
     }
     
 }

@@ -18,8 +18,8 @@ public class ImagenPanel extends JPanel{
 
     public ImagenPanel(QuebrantaSueldosModelo modelo, int img){
         this.model = modelo;
-        this.setBorder(new CompoundBorder( new EmptyBorder(50,5,0,5),new LineBorder(Color.BLACK, 3) ));
-        
+        this.setBorder(new CompoundBorder( new EmptyBorder(50,5,50,5),new LineBorder(Color.BLACK, 3) ));
+        this.nimg = img;
     }
 
 
@@ -27,8 +27,9 @@ public class ImagenPanel extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         BufferedImage imagen = model.getImagen(nimg);
+        
         if(imagen != null)
-        g.drawImage(imagen, 0, 50, imagen.getWidth(),imagen.getHeight(),this); //Ajustar a las imagenes
+        g.drawImage(imagen, imagen.getWidth(), imagen.getHeight(), imagen.getWidth(),imagen.getHeight(),this); //Ajustar a las imagenes
         
     }
 
@@ -36,7 +37,4 @@ public class ImagenPanel extends JPanel{
         this.repaint();
     }
 
-
-
-    
 }
