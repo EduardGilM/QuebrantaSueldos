@@ -1,0 +1,90 @@
+package com.mycompany.quebrantasueldos.Controlador;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
+import com.mycompany.quebrantasueldos.Vista.QuebrantaSueldosVista;
+
+public class QuebrantaSueldosControlador {
+
+    private QuebrantaSueldosModelo modelo;
+    private QuebrantaSueldosVista view;
+
+    public QuebrantaSueldosControlador(QuebrantaSueldosModelo modelo, QuebrantaSueldosVista view) {
+        this.modelo = modelo;
+        this.view = view;
+        view.setActionListener(new QuebrantaSueldosControladorActionListener(modelo, view));
+    }
+}
+
+class QuebrantaSueldosControladorActionListener implements ActionListener {
+    private QuebrantaSueldosModelo model;
+    private QuebrantaSueldosVista view;
+
+    public QuebrantaSueldosControladorActionListener(QuebrantaSueldosModelo model, QuebrantaSueldosVista view) {
+        this.model = model;
+        this.view = view;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        switch (command) {
+            case "Jugar":
+
+                if (!this.model.comprobarSaldo()) {
+                    this.view.errorSaldo();
+                    break;
+                }
+
+                if (!this.view.getCheck()) {
+                    this.model.Tirada1();
+                    this.model.Tirada2();
+                    this.model.Tirada3();
+
+                    this.view.RepintarPanel1();
+                    this.view.RepintarPanel2();
+                    this.view.RepintarPanel3();
+                } else {
+                    if (this.view.getCheck1()) {
+                        this.model.Tirada1();
+                        this.view.RepintarPanel1();
+                    }
+                    if (this.view.getCheck2()) {
+                        this.model.Tirada2();
+                        this.view.RepintarPanel2();
+                    }
+                    if (this.view.getCheck3()) {
+                        this.model.Tirada3();
+                        this.view.RepintarPanel3();
+                    }
+                }
+                this.model.Premio();
+                this.view.setSaldo(this.model.getSaldo());
+                this.view.setPuntos(this.model.getPuntuacion());
+                break;
+            case "Comenzar":
+                if (this.view.datosConfiguracion()) {
+                    this.model.setTematica(this.view.getTematica());
+                    this.model.setJugador(this.view.getNombre());
+                    this.model.setSaldo(this.view.getSaldo());
+                    this.view.setSaldo(this.model.getSaldo());
+                    this.view.cerrarVentanaConfiguracion();
+                    this.view.abrirVentanaJuego();
+                } else {
+                    this.view.datosFaltantes();
+                }
+                break;
+            case "Asistente": 
+                if (this.view.getCheck()) {
+                    this.view.habilitarChecks();
+                } else {
+                    this.view.deshabilitarChecks();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}

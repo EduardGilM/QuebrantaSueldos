@@ -12,8 +12,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 public class QuebrantaSueldosModelo {
     
@@ -22,6 +25,9 @@ public class QuebrantaSueldosModelo {
     private int nrand1, nrand2, nrand3;
     private int saldo;
     private int puntuacion;
+    private HashMap<String, Integer> jugadores = new HashMap<String, Integer>();
+    private String tematica;
+    private String jugadorActual;
     
     public QuebrantaSueldosModelo() {
         
@@ -43,6 +49,16 @@ public class QuebrantaSueldosModelo {
         }
     
     }
+
+    public void setJugador(String jugador){
+        jugadores.put(jugador, 0);
+        jugadorActual = jugador;
+    }
+
+    public void setTematica(String tematica){
+        this.tematica = tematica;
+    }
+
     
     public BufferedImage getImagen(int i) {
         switch(i) {
@@ -133,7 +149,13 @@ public class QuebrantaSueldosModelo {
             saldo -= 1;
     }
 
-
+    public boolean comprobarSaldo() {
+        if (saldo <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 
 }

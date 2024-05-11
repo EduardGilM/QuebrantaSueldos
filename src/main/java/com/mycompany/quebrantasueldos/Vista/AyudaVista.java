@@ -16,7 +16,15 @@ public class AyudaVista extends JFrame {
         // Info Ayuda
         infoAyuda = new InfoAyuda();
         this.add(infoAyuda, BorderLayout.CENTER);
+        this.setVisible(false);
+    }
+
+    public void abrirVentana() {
         this.setVisible(true);
+    }
+
+    public void cerrarVentana() {
+        this.dispose();
     }
 
     public class TituloAyuda extends JPanel {

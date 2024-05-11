@@ -4,6 +4,7 @@
  */
 package com.mycompany.quebrantasueldos.Vista;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -16,7 +17,6 @@ public class TragaPerrasMenuBar extends JMenuBar{
     
     public TragaPerrasMenuBar()
     {
-        
         ventanas = new JMenu("Ventanas");
         ayuda = new JMenu("Ayuda");
         

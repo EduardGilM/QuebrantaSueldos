@@ -6,6 +6,8 @@ package com.mycompany.quebrantasueldos.Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -19,11 +21,12 @@ public class EstadoPanel extends JPanel{
     
     public EstadoPanel(){
     
-    this.setBorder(new CompoundBorder(new EmptyBorder(0,10,5,5),new LineBorder(Color.GRAY, 1) ));
-    
+    this.setBorder(new CompoundBorder(new EmptyBorder(0,10,5,5), new LineBorder(Color.BLACK, 3) ));
+    this.setBackground(new Color(251, 248, 201));
     
     //Variables
     check = new JCheckBox();
+    check.setName("Asistente");
     etiqueta = new JLabel("Asistente");
     
     et_saldo = new JLabel("Saldo: ");
@@ -32,7 +35,7 @@ public class EstadoPanel extends JPanel{
     saldo_boton = new JButton("Ingresar"); // AñDIR un listener a este boton.
     
     et_puntos = new JLabel("Puntos: ");
-    puntos = new JTextField();
+    puntos = new JTextField("0");
     puntos.setPreferredSize(new Dimension(200, 30));
     puntos.setEditable(false);
     
@@ -50,6 +53,31 @@ public class EstadoPanel extends JPanel{
     
     this.add(et_puntos);
     this.add(puntos);
+    }
+
+    public void setActionListener(ActionListener a){
+        saldo_boton.addActionListener(a);
+        check.addActionListener(a);
+    }
+
+    public int getSaldo(){
+        return Integer.parseInt(saldo.getText());
+    }
+
+    public void setSaldo(int saldo){
+        this.saldo.setText(String.valueOf(saldo));
+    }
+
+    public void setPuntos(int puntos){
+        this.puntos.setText(String.valueOf(puntos));
+    }
+
+    public int getPuntos(){
+        return Integer.parseInt(puntos.getText());
+    }
+
+    public boolean getCheck(){
+        return check.isSelected();
     }
 
 }

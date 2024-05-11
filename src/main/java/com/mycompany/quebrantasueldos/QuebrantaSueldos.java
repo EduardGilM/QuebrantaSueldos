@@ -6,6 +6,7 @@ package com.mycompany.quebrantasueldos;
 
 import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
 import com.mycompany.quebrantasueldos.Vista.QuebrantaSueldosVista;
+import com.mycompany.quebrantasueldos.Controlador.QuebrantaSueldosControlador;
 
 /**
  *
@@ -18,6 +19,8 @@ public class QuebrantaSueldos {
         QuebrantaSueldosModelo modelo = new QuebrantaSueldosModelo();
         
         QuebrantaSueldosVista view = new QuebrantaSueldosVista(modelo);
+
+        QuebrantaSueldosControlador controller = new QuebrantaSueldosControlador(modelo, view);
         
     }
 }

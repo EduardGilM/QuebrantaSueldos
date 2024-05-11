@@ -40,7 +40,7 @@ public class JuegoVista extends JFrame{
         
         
         
-        this.setVisible(true);
+        this.setVisible(false);
     }
     //Juego
     public void abrirVentana(){
@@ -63,14 +63,51 @@ public class JuegoVista extends JFrame{
     public void setActionListener(ActionListener a){
         infoJuego.setActionListener(a);
     }
+
+    public boolean getCheck1(){
+        return infoJuego.getCheck1();
+    }
+    public boolean getCheck2(){
+        return infoJuego.getCheck2();
+    }
+    public boolean getCheck3(){
+        return infoJuego.getCheck3();
+    }
+
+    public void deshabilitarChecks() {
+        infoJuego.deshabilitarChecks();
+    }
+    public void habilitarChecks() {
+        infoJuego.habilitarChecks();
+    }
+
     //Estado Panel
+
+    public boolean getCheck() {
+        return estadoPanel.getCheck();
+    }
+
+    public void setSaldo(int saldo){
+        estadoPanel.setSaldo(saldo);
+    }
+
+    public int getSaldo(){
+        return estadoPanel.getSaldo();
+    }
+
+    public void setPuntos(int puntos){
+        estadoPanel.setPuntos(puntos);
+    }
+
+    public int getPuntos(){
+        return estadoPanel.getPuntos();
+    }
     
 
     
     public class InfoJuego extends JPanel {
         QuebrantaSueldosModelo model;
         public InfoJuego(QuebrantaSueldosModelo modelo) {
-            
             this.setLayout(new GridLayout(1,1));
             this.setBorder(new EmptyBorder(10, 10, 10, 10));
             this.model = modelo;
@@ -99,6 +136,21 @@ public class JuegoVista extends JFrame{
         public void setActionListener(ActionListener a){
             tirarPanel.SetActionListener(a);
         }   
+        public boolean getCheck1(){
+            return tirarPanel.getCheck1();
+        }
+        public boolean getCheck2(){
+            return tirarPanel.getCheck2();
+        }
+        public boolean getCheck3(){
+            return tirarPanel.getCheck3();
+        }
+        public void deshabilitarChecks() {
+            tirarPanel.deshabilitarChecks();
+        }
+        public void habilitarChecks() {
+            tirarPanel.habilitarChecks();
+        }
     }
     
 }

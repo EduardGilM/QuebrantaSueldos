@@ -16,7 +16,7 @@ public class RankingVista extends JFrame {
         // Info Ranking
         infoRanking = new InfoRanking();
         this.add(infoRanking, BorderLayout.CENTER);
-        this.setVisible(true);
+        this.setVisible(false);
     }
 
     public class TituloRanking extends JPanel {
@@ -54,4 +54,13 @@ public class RankingVista extends JFrame {
             g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
         }
     }
+
+    public void abrirVentana() {
+        this.setVisible(true);
+    }
+
+    public void cerrarVentana() {
+        this.dispose();
+    }
+
 }

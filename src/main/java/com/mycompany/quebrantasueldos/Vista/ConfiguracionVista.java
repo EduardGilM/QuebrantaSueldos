@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class ConfiguracionVista extends JFrame {
     private InfoPanel infoPanel;
-    private JButton jugar;
+    private JButton comenzar;
 
     public ConfiguracionVista() {
         super("Configuración");
@@ -19,19 +19,50 @@ public class ConfiguracionVista extends JFrame {
         this.add(infoPanel, BorderLayout.CENTER);
 
         // Boton jugar
-        jugar = new JButton("Jugar");
-        jugar.setPreferredSize(new Dimension(100, 50));
-        jugar.setBackground(Color.BLACK);
-        jugar.setForeground(Color.WHITE);
-        jugar.setFont(new Font("Arial", Font.BOLD, 14));
+        comenzar = new JButton("Comenzar");
+        comenzar.setPreferredSize(new Dimension(100, 50));
+        comenzar.setBackground(Color.BLACK);
+        comenzar.setForeground(Color.WHITE);
+        comenzar.setFont(new Font("Arial", Font.BOLD, 14));
 
-        this.add(jugar, BorderLayout.SOUTH);
+        this.add(comenzar, BorderLayout.SOUTH);
 
+        this.setVisible(false);
+    }
+
+    public void abrirVentana() {
         this.setVisible(true);
     }
 
+    public void cerrarVentana() {
+        this.dispose();
+    }
+
+    public void datosFaltantes() {
+        JOptionPane.showMessageDialog(this, "Faltan datos por rellenar o tienes saldo invalido", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
     public void setActionListener(ActionListener a) {
-        jugar.addActionListener(a);
+        comenzar.addActionListener(a);
+    }
+
+    public boolean datosConfiguracion() {
+        if (infoPanel.getNombre().equals("") || infoPanel.getSaldo() <= 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getNombre() {
+        return infoPanel.getNombre();
+    }
+
+    public String getTematica() {
+        return infoPanel.getTematica();
+    }
+
+    public int getSaldo() {
+        return infoPanel.getSaldo();
     }
 
     public class TituloPanel extends JPanel {
@@ -107,7 +138,7 @@ public class ConfiguracionVista extends JFrame {
             saldo.setFont(new Font("Arial", Font.BOLD, 14));
             saldo.setForeground(Color.BLACK);
 
-            saldoText = new JTextField();
+            saldoText = new JTextField("0");
             saldoText.setPreferredSize(new Dimension(200, 30));
 
             panel.add(nombre);
