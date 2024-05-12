@@ -148,11 +148,7 @@ public class QuebrantaSueldosModelo {
     }
 
     public boolean comprobarSaldo() {
-        if (saldo <= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return saldo > 0;
     }
 
     public Map<String, Integer> getRanking() {

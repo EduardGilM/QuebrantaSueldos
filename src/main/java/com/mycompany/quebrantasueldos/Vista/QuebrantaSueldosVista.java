@@ -91,6 +91,10 @@ public class QuebrantaSueldosVista extends JFrame {
         return juegoVista.getPuntos();
     }
 
+    public void repintarJuego() {
+        juegoVista.repaint();
+    }
+
     public void finPartida() {
         JOptionPane.showMessageDialog(this, "Te has quedado sin saldo. Fin de la partida", "Fin Partida", JOptionPane.INFORMATION_MESSAGE);
     }

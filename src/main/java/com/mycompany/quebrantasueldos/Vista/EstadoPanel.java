@@ -17,7 +17,7 @@ public class EstadoPanel extends JPanel{
     private JCheckBox check;
     private JLabel etiqueta, et_saldo, et_puntos;
     private JTextField saldo,puntos;
-    private JButton saldo_boton;
+    private JButton saldo_boton, retirar_boton;
     
     public EstadoPanel(){
     
@@ -33,6 +33,7 @@ public class EstadoPanel extends JPanel{
     saldo = new JTextField();
     saldo.setPreferredSize(new Dimension(200, 30));
     saldo_boton = new JButton("Ingresar"); // AñDIR un listener a este boton.
+    retirar_boton = new JButton("Retirar");
     
     et_puntos = new JLabel("Puntos: ");
     puntos = new JTextField("0");
@@ -58,6 +59,7 @@ public class EstadoPanel extends JPanel{
     public void setActionListener(ActionListener a){
         saldo_boton.addActionListener(a);
         check.addActionListener(a);
+        retirar_boton.addActionListener(a);
     }
 
     public int getSaldo(){

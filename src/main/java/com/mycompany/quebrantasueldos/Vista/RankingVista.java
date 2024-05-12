@@ -17,6 +17,7 @@ public class RankingVista extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 800);
         this.setLayout(new BorderLayout());
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Info Ranking
         infoRanking = new InfoRanking(this.modelo);
@@ -61,7 +62,7 @@ public class RankingVista extends JFrame {
 
         public void setRanking() {
             Map<String, Integer> ranking = this.model.getRanking();
-
+            
             for (Map.Entry<String, Integer> entry : ranking.entrySet()) {
                 String key = entry.getKey();
                 Integer value = entry.getValue();

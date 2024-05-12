@@ -55,6 +55,7 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
                         this.view.RepintarPanel3();
                     }
                 }
+                this.view.repintarJuego();
                 this.model.Premio();
                 this.view.setSaldo(this.model.getSaldo());
                 this.view.setPuntos(this.model.getPuntuacion());
@@ -99,6 +100,14 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
                 break;
             case "Salir":
                 System.exit(0);
+                break;
+            case "Ingresar":
+                this.model.setSaldo(this.view.getSaldoJuego());
+                break;
+            case "Retirar":
+                this.model.finPartida();
+                this.view.cerrarVentanaJuego();
+                this.view.abrirVentanaRanking();
                 break;
             default:
                 break;
