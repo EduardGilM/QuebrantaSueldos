@@ -26,7 +26,7 @@ public class QuebrantaSueldosVista extends JFrame {
         juegoVista = new JuegoVista(model);
         
         //Ranking
-        ranking = new RankingVista();
+        ranking = new RankingVista(this.model);
 
         //Ayuda
         ayuda = new AyudaVista();
@@ -91,8 +91,8 @@ public class QuebrantaSueldosVista extends JFrame {
         return juegoVista.getPuntos();
     }
 
-    public void errorSaldo() {
-        JOptionPane.showMessageDialog(this, "No tienes saldo suficiente", "Error", JOptionPane.ERROR_MESSAGE);
+    public void finPartida() {
+        JOptionPane.showMessageDialog(this, "Te has quedado sin saldo. Fin de la partida", "Fin Partida", JOptionPane.INFORMATION_MESSAGE);
     }
     
     //Funciones de Configuración
@@ -142,7 +142,18 @@ public class QuebrantaSueldosVista extends JFrame {
     }
     
     //Vetana Ranking
+
+    public void setRanking() {
+        ranking.setRanking();
+    }
     
     
     //Ayuda
+    public void abrirVentanaAyuda(){
+        ayuda.abrirVentana();
+    }
+
+    public void cerrarVentanaAyuda(){
+        ayuda.cerrarVentana();
+    }
 }

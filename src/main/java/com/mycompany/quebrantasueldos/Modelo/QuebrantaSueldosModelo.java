@@ -4,19 +4,13 @@
  */
 package com.mycompany.quebrantasueldos.Modelo;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 public class QuebrantaSueldosModelo {
     
@@ -25,7 +19,7 @@ public class QuebrantaSueldosModelo {
     private int nrand1, nrand2, nrand3;
     private int saldo;
     private int puntuacion;
-    private HashMap<String, Integer> jugadores = new HashMap<String, Integer>();
+    private Map<String, Integer> jugadores = new HashMap<String, Integer>();
     private String tematica;
     private String jugadorActual;
     
@@ -87,6 +81,10 @@ public class QuebrantaSueldosModelo {
 
     public int getPuntuacion() {
         return puntuacion;
+    }
+
+    public void finPartida() {
+        jugadores.put(jugadorActual, puntuacion);
     }
 
     public void setPuntuacion(int puntuacion) {
@@ -155,6 +153,10 @@ public class QuebrantaSueldosModelo {
         } else {
             return true;
         }
+    }
+
+    public Map<String, Integer> getRanking() {
+        return jugadores;
     }
 
 

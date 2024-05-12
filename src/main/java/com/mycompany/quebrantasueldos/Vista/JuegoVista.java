@@ -50,6 +50,13 @@ public class JuegoVista extends JFrame{
     public void cerrarVentana(){
         this.dispose();
     }
+
+    public void setActionListener(ActionListener a){
+        infoJuego.setActionListener(a);
+        estadoPanel.setActionListener(a);
+        menu.setActionListener(a);
+    }
+
     //Info Juego
     public void RepintarPanel1(){
         infoJuego.RepintarPanel1();
@@ -59,9 +66,6 @@ public class JuegoVista extends JFrame{
     }
     public void RepintarPanel3(){
         infoJuego.RepintarPanel3();
-    }
-    public void setActionListener(ActionListener a){
-        infoJuego.setActionListener(a);
     }
 
     public boolean getCheck1(){

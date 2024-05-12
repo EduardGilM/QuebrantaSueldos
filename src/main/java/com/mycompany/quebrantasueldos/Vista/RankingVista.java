@@ -2,21 +2,30 @@ package com.mycompany.quebrantasueldos.Vista;
 
 import javax.swing.*;
 
+import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
+
 import java.awt.*;
+import java.util.Map;
 
 public class RankingVista extends JFrame {
     private InfoRanking infoRanking;
+    private QuebrantaSueldosModelo modelo;
 
-    public RankingVista() {
+    public RankingVista(QuebrantaSueldosModelo model) {
         super("Ranking");
+        this.modelo = model;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000, 800);
         this.setLayout(new BorderLayout());
 
         // Info Ranking
-        infoRanking = new InfoRanking();
+        infoRanking = new InfoRanking(this.modelo);
         this.add(infoRanking, BorderLayout.CENTER);
         this.setVisible(false);
+    }
+
+    public void setRanking() {
+        this.infoRanking.setRanking();
     }
 
     public class TituloRanking extends JPanel {
@@ -43,8 +52,25 @@ public class RankingVista extends JFrame {
     }
 
     public class InfoRanking extends JPanel {
-        public InfoRanking() {
+
+        private QuebrantaSueldosModelo model;
+        public InfoRanking(QuebrantaSueldosModelo model) {
+            this.model = model;
             this.add(new TituloRanking());
+        }
+
+        public void setRanking() {
+            Map<String, Integer> ranking = this.model.getRanking();
+
+            for (Map.Entry<String, Integer> entry : ranking.entrySet()) {
+                String key = entry.getKey();
+                Integer value = entry.getValue();
+                JLabel label = new JLabel(key + ": " + value);
+                label.setFont(new Font("Impact", Font.PLAIN, 30));
+                label.setForeground(new Color(249, 237, 163));
+                this.add(label);
+                this.add(Box.createVerticalStrut(10));
+            }
         }
 
         @Override

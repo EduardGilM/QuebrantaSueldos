@@ -4,7 +4,6 @@
  */
 package com.mycompany.quebrantasueldos.Vista;
 
-import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;

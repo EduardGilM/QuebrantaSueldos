@@ -33,11 +33,6 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
         switch (command) {
             case "Jugar":
 
-                if (!this.model.comprobarSaldo()) {
-                    this.view.errorSaldo();
-                    break;
-                }
-
                 if (!this.view.getCheck()) {
                     this.model.Tirada1();
                     this.model.Tirada2();
@@ -63,6 +58,13 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
                 this.model.Premio();
                 this.view.setSaldo(this.model.getSaldo());
                 this.view.setPuntos(this.model.getPuntuacion());
+                if (!this.model.comprobarSaldo()) {
+                    this.view.finPartida();
+                    this.model.finPartida();
+                    this.view.setRanking();
+                    this.view.cerrarVentanaJuego();
+                    this.view.abrirVentanaRanking();
+                }
                 break;
             case "Comenzar":
                 if (this.view.datosConfiguracion()) {
@@ -82,6 +84,21 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
                 } else {
                     this.view.deshabilitarChecks();
                 }
+                break;
+            case "Configuracion":
+                this.view.abrirVentanaConfiguracion();
+                break;
+            case "Juego":
+                this.view.abrirVentanaJuego();
+                break;
+            case "Ranking":
+                this.view.abrirVentanaRanking();
+                break;
+            case "AcercaDe":
+                this.view.abrirVentanaAyuda();
+                break;
+            case "Salir":
+                System.exit(0);
                 break;
             default:
                 break;
