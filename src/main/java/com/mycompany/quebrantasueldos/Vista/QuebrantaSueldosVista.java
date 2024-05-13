@@ -53,6 +53,7 @@ public class QuebrantaSueldosVista extends JFrame {
     public void setActionListener(ActionListener actionListener){
         juegoVista.setActionListener(actionListener);
         configuracion.setActionListener(actionListener);
+        ranking.setActionListener(actionListener);
     }
 
     public void RepintarPanel1() {
@@ -149,6 +150,10 @@ public class QuebrantaSueldosVista extends JFrame {
 
     public void setRanking() {
         ranking.setRanking();
+    }
+
+    public void clearRanking() {
+        ranking.clearRanking();
     }
     
     

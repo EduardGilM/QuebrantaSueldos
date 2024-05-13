@@ -85,6 +85,9 @@ public class QuebrantaSueldosModelo {
 
     public void finPartida() {
         jugadores.put(jugadorActual, puntuacion);
+        puntuacion = 0;
+        jugadorActual = "";
+        saldo = 0;
     }
 
     public void setPuntuacion(int puntuacion) {
@@ -146,7 +149,6 @@ public class QuebrantaSueldosModelo {
         }else
             saldo -= 1;
 
-        System.out.println("Saldo: " + nrand1 + " " + nrand2 + " " + nrand3);
     }
 
     public boolean comprobarSaldo() {

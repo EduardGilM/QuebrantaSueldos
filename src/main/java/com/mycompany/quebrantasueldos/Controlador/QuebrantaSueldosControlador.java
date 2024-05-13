@@ -93,6 +93,7 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
                 this.view.abrirVentanaJuego();
                 break;
             case "Ranking":
+                this.view.clearRanking();
                 this.view.abrirVentanaRanking();
                 break;
             case "AcercaDe":
@@ -106,9 +107,16 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
                 break;
             case "Retirar":
                 this.model.finPartida();
+                this.view.clearRanking();
+                this.view.setRanking();
+                this.view.setSaldo(0);
+                this.view.setPuntos(0);
                 this.view.cerrarVentanaJuego();
                 this.view.abrirVentanaRanking();
                 break;
+            case "Volver a jugar": 
+                this.view.cerrarVentanaRanking();
+                this.view.abrirVentanaConfiguracion();
             default:
                 break;
         }

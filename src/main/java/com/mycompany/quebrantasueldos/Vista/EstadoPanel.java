@@ -49,6 +49,7 @@ public class EstadoPanel extends JPanel{
     this.add(et_saldo);
     this.add(saldo);
     this.add(saldo_boton);
+    this.add(retirar_boton);
     
     this.add(Box.createHorizontalStrut(50));
     
