@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 public class QuebrantaSueldosModelo {
     
     private BufferedImage imagen1, imagen2, imagen3;
-    private String[] nombres = {"assets/imagen_00.jpg", "assets/imagen_01.jpg", "assets/imagen_02.jpg", "assets/imagen_03.jpg","assets/imagen_04.jpg"}; 
+    private String[] nombres = {"assets/imagen_00.jpg", "assets/imagen_01.jpg", "assets/imagen_02.jpg", "assets/imagen_03.jpg","assets/imagen_04.jpg","assets/imagen_05.jpg","assets/imagen_06.jpg"}; 
     private int nrand1, nrand2, nrand3;
     private int saldo;
     private int puntuacion;
@@ -27,9 +27,9 @@ public class QuebrantaSueldosModelo {
         
         puntuacion = 0;
         saldo = 0;
-        nrand1 = (int) (Math.random() * 5);//0-4
-        nrand2 = (int) (Math.random() * 5);
-        nrand3 = (int) (Math.random() * 5);
+        nrand1 = (int) (Math.random() * 7);//0-6 5 frutas y 2 espe
+        nrand2 = (int) (Math.random() * 7);
+        nrand3 = (int) (Math.random() * 7);
 
         try {
             imagen1 = ImageIO.read(new File(nombres[nrand1]));
@@ -93,7 +93,7 @@ public class QuebrantaSueldosModelo {
 
     //Cambiar individualmente las imagenes y los numeros
     public void Tirada1(){
-        nrand1 = (int) (Math.random() * 5);
+        nrand1 = (int) (Math.random() * 7);
         try {
             imagen1 = ImageIO.read(new File(nombres[nrand1]));
         }
@@ -103,7 +103,7 @@ public class QuebrantaSueldosModelo {
         }
     }
     public void Tirada2(){
-        nrand2 = (int) (Math.random() * 5);
+        nrand2 = (int) (Math.random() * 7);
         try {
             imagen2 = ImageIO.read(new File(nombres[nrand2]));
         }
@@ -113,7 +113,7 @@ public class QuebrantaSueldosModelo {
         }
     }
     public void Tirada3(){
-        nrand3 = (int) (Math.random() * 5);
+        nrand3 = (int) (Math.random() * 7); // 0-6
         try {
             imagen3 = ImageIO.read(new File(nombres[nrand3]));
         }
@@ -133,11 +133,11 @@ public class QuebrantaSueldosModelo {
 
     //Comprobar el premio
     public void Premio(){
-        if(nrand1 == nrand2 && nrand1 == nrand3 && nrand1 == 3){ //Imagen 4 posicio 3 en el array, reservada para la moneda
+        if(nrand1 == nrand2 && nrand1 == nrand3 && nrand1 == 5){ //Imagen 6 posicio 5 en el array, reservada para la campana
             saldo += 50;
             puntuacion += 3;
         }
-        else if (nrand1 == nrand2 && nrand1 == nrand3 && nrand1 == 4){ //Imagen 5 posicio 4 en el array, reservada para la campana
+        else if (nrand1 == nrand2 && nrand1 == nrand3 && nrand1 == 6){ //Imagen 7 posicio 6 en el array, reservada para la campana
             saldo *=10;
             puntuacion += 5;
         }else if(nrand1 == nrand2 && nrand1 == nrand3){ //Tres iguales
@@ -145,6 +145,8 @@ public class QuebrantaSueldosModelo {
             puntuacion += 1;
         }else
             saldo -= 1;
+
+        System.out.println("Saldo: " + nrand1 + " " + nrand2 + " " + nrand3);
     }
 
     public boolean comprobarSaldo() {

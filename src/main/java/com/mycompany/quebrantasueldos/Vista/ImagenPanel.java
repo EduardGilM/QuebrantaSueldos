@@ -23,9 +23,9 @@ public class ImagenPanel extends JPanel{
     public ImagenPanel(QuebrantaSueldosModelo modelo, int img){
 
         this.model = modelo;
-        this.setBorder(new CompoundBorder( new EmptyBorder(100,5,100,5),new LineBorder(Color.BLACK, 3) ));
+        this.setBorder(new CompoundBorder( new EmptyBorder(100,5,180,5),new LineBorder(Color.BLACK, 3) ));
         this.nimg = img;
-        this.setBackground(new Color(255, 255, 255, 0));
+        this.setBackground(new Color(0, 0, 0, 150));
         check = new JCheckBox();
         this.add(check);
     }
@@ -41,7 +41,7 @@ public class ImagenPanel extends JPanel{
         BufferedImage imagen = model.getImagen(nimg);
         
         if(imagen != null) {
-        g.drawImage(imagen,100, 200, 100, 100,this); //Ajustar a las imagenes
+        g.drawImage(imagen,5, 150, 310, 300,this); //Ajustar a las imagenes
         }
     }
 
