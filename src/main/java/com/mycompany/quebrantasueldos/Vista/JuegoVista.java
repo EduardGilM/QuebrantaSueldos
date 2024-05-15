@@ -43,6 +43,7 @@ public class JuegoVista extends JFrame{
         
         this.setVisible(false);
     }
+
     //Juego
     public void abrirVentana(){
         this.setVisible(true);

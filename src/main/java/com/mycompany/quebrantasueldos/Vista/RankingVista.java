@@ -1,15 +1,21 @@
 package com.mycompany.quebrantasueldos.Vista;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import com.mycompany.quebrantasueldos.Modelo.QuebrantaSueldosModelo;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Map;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RankingVista extends JFrame {
     private InfoRanking infoRanking;
     private QuebrantaSueldosModelo modelo;
+    private TragaPerrasMenuBar menu;
+    private JButton reply;
 
     public RankingVista(QuebrantaSueldosModelo model) {
         super("Ranking");
@@ -19,14 +25,33 @@ public class RankingVista extends JFrame {
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        this.menu = new TragaPerrasMenuBar();
+        this.setJMenuBar(menu);
+
         // Info Ranking
         infoRanking = new InfoRanking(this.modelo);
         this.add(infoRanking, BorderLayout.CENTER);
         this.setVisible(false);
+
+        reply = new JButton("Volver a jugar");
+        reply.setBackground(new Color(200, 177, 128));
+        reply.setForeground(Color.WHITE);
+        reply.setBorder(new LineBorder(Color.BLACK, 3));
+        reply.setFont(new Font("Arial", Font.BOLD, 24));
+        this.add(reply, BorderLayout.SOUTH);
+    }
+
+    public void setActionListener(ActionListener actionListener) {
+        menu.setActionListener(actionListener);
+        reply.addActionListener(actionListener);
     }
 
     public void setRanking() {
         this.infoRanking.setRanking();
+    }
+    
+    public void clearRanking() {
+        this.infoRanking.clearRanking();
     }
 
     public class TituloRanking extends JPanel {
@@ -63,7 +88,16 @@ public class RankingVista extends JFrame {
         public void setRanking() {
             Map<String, Integer> ranking = this.model.getRanking();
             
-            for (Map.Entry<String, Integer> entry : ranking.entrySet()) {
+            List<Map.Entry<String, Integer>> sortedRanking = ranking.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .collect(Collectors.toList());
+
+            int count = 0;
+            for (Map.Entry<String, Integer> entry : sortedRanking) {
+                if (count >= 10) {
+                    break;
+                }
                 String key = entry.getKey();
                 Integer value = entry.getValue();
                 JLabel label = new JLabel(key + ": " + value);
@@ -71,7 +105,13 @@ public class RankingVista extends JFrame {
                 label.setForeground(new Color(249, 237, 163));
                 this.add(label);
                 this.add(Box.createVerticalStrut(10));
+                count++;
             }
+        }
+
+        public void clearRanking() {
+            this.removeAll();
+            this.add(new TituloRanking());
         }
 
         @Override
