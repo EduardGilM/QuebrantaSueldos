@@ -18,6 +18,7 @@ public class EstadoPanel extends JPanel{
     private JLabel etiqueta, et_saldo, et_puntos;
     private JTextField saldo,puntos;
     private JButton saldo_boton, retirar_boton;
+    private Integer fontSize = 20;
     
     public EstadoPanel(){
     
@@ -28,14 +29,18 @@ public class EstadoPanel extends JPanel{
     check = new JCheckBox();
     check.setName("Asistente");
     etiqueta = new JLabel("Asistente");
+    etiqueta.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
     
     et_saldo = new JLabel("Saldo: ");
     saldo = new JTextField();
     saldo.setPreferredSize(new Dimension(200, 30));
     saldo_boton = new JButton("Ingresar"); // AñDIR un listener a este boton.
     retirar_boton = new JButton("Retirar");
+    saldo_boton.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
+    retirar_boton.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
     
     et_puntos = new JLabel("Puntos: ");
+    et_puntos.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
     puntos = new JTextField("0");
     puntos.setPreferredSize(new Dimension(200, 30));
     puntos.setEditable(false);
@@ -55,6 +60,15 @@ public class EstadoPanel extends JPanel{
     
     this.add(et_puntos);
     this.add(puntos);
+    }
+
+    public void setFontSize(int size){
+        fontSize = size;
+        etiqueta.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
+        et_saldo.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
+        et_puntos.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
+        saldo_boton.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
+        retirar_boton.setFont(new Font("Arial", Font.BOLD, fontSize - 5));
     }
 
     public void setActionListener(ActionListener a){

@@ -6,6 +6,7 @@ import java.awt.*;
 public class AyudaVista extends JFrame {
 
     private InfoAyuda infoAyuda;
+    private Integer fontSize = 20;
 
     public AyudaVista() {
         super("Ayuda");
@@ -26,6 +27,11 @@ public class AyudaVista extends JFrame {
 
     public void cerrarVentana() {
         this.dispose();
+    }
+
+    public void setFontSize(int size) {
+        fontSize = size;
+        infoAyuda.setFontSize(size);
     }
 
     public class TituloAyuda extends JPanel {
@@ -52,11 +58,20 @@ public class AyudaVista extends JFrame {
     }
 
     public class InfoAyuda extends JPanel {
+
+        private Integer fontSize = 20;
+
+        private JLabel texto;
+        private JLabel texto2;
+        private JLabel texto3;
+        private JLabel texto4;
+        private JLabel texto5;
+
         public InfoAyuda() {
             this.add(new TituloAyuda());
 
-            JLabel texto = new JLabel("Hola somos el grupo de Jose Carlos Weingartner y Eduard Gil y hoy vamos a ayudaros a jugar a");
-            texto.setFont(new Font("Arial", Font.PLAIN, 20));
+            texto = new JLabel("Hola somos el grupo de Jose Carlos Weingartner y Eduard Gil y hoy vamos a ayudaros a jugar a");
+            texto.setFont(new Font("Arial", Font.PLAIN, fontSize));
             texto.setForeground(Color.WHITE);
             this.add(texto);
 
@@ -64,8 +79,8 @@ public class AyudaVista extends JFrame {
             empty.setPreferredSize(new Dimension(1000, 100));
             empty.setBackground(new Color(255, 255, 255, 0));
 
-            JLabel texto2 = new JLabel("QUEBRANTASUELDOS");
-            texto2.setFont(new Font("IMPACT", Font.BOLD, 40));
+            texto2 = new JLabel("QUEBRANTASUELDOS");
+            texto2.setFont(new Font("IMPACT", Font.BOLD, fontSize + 20));
             texto2.setForeground(Color.WHITE);
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.gridx = 0;
@@ -76,13 +91,13 @@ public class AyudaVista extends JFrame {
 
             this.add(empty);
 
-            JLabel texto3 = new JLabel("Es tan simple como tirar de la palanca y esperar a que los símbolos coincidan.");
-            texto3.setFont(new Font("Arial", Font.PLAIN, 20));
+            texto3 = new JLabel("Es tan simple como tirar de la palanca y esperar a que los símbolos coincidan.");
+            texto3.setFont(new Font("Arial", Font.PLAIN, fontSize));
             texto3.setForeground(Color.WHITE);
             this.add(texto3);
 
-            JLabel texto4 = new JLabel(" Si coinciden, ganas. Si no, pierdes.");
-            texto4.setFont(new Font("Arial", Font.PLAIN, 20));
+            texto4 = new JLabel(" Si coinciden, ganas. Si no, pierdes.");
+            texto4.setFont(new Font("Arial", Font.PLAIN, fontSize));
             texto4.setForeground(Color.WHITE);
             this.add(texto4);
 
@@ -91,8 +106,8 @@ public class AyudaVista extends JFrame {
             empty2.setBackground(new Color(255, 255, 255, 0));
             this.add(empty2);
 
-            JLabel texto5 = new JLabel("¡Suerte!");
-            texto5.setFont(new Font("IMPACT", Font.PLAIN, 40));
+            texto5 = new JLabel("¡Suerte!");
+            texto5.setFont(new Font("IMPACT", Font.PLAIN, fontSize + 20));
             texto5.setForeground(Color.WHITE);
             GridBagConstraints gbc2 = new GridBagConstraints();
             gbc2.gridx = 0;
@@ -100,6 +115,15 @@ public class AyudaVista extends JFrame {
             gbc2.weighty = 1;
             gbc2.insets = new Insets(0, 0, 0, 0);
             this.add(texto5, gbc2);
+        }
+
+        public void setFontSize(int size) {
+            fontSize = size;
+            texto.setFont(new Font("Arial", Font.PLAIN, fontSize));
+            texto2.setFont(new Font("IMPACT", Font.BOLD, fontSize + 20));
+            texto3.setFont(new Font("Arial", Font.PLAIN, fontSize));
+            texto4.setFont(new Font("Arial", Font.PLAIN, fontSize));
+            texto5.setFont(new Font("IMPACT", Font.PLAIN, fontSize + 20));
         }
 
         @Override

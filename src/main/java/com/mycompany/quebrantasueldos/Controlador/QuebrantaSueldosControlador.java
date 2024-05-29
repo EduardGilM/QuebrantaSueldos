@@ -75,6 +75,8 @@ class QuebrantaSueldosControladorActionListener implements ActionListener {
                     this.view.setSaldo(this.model.getSaldo());
                     this.view.cerrarVentanaConfiguracion();
                     this.view.abrirVentanaJuego();
+                    this.view.setFontSize(this.view.getFontSize());
+                    this.model.setNewImages();
                 } else {
                     this.view.datosFaltantes();
                 }

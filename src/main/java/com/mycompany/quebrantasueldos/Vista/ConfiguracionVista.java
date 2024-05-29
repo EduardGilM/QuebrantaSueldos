@@ -1,12 +1,15 @@
 package com.mycompany.quebrantasueldos.Vista;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ConfiguracionVista extends JFrame {
     private InfoPanel infoPanel;
     private JButton comenzar;
+    private Integer fontSize = 14;
 
     public ConfiguracionVista() {
         super("Configuración");
@@ -24,7 +27,7 @@ public class ConfiguracionVista extends JFrame {
         comenzar.setPreferredSize(new Dimension(100, 50));
         comenzar.setBackground(Color.BLACK);
         comenzar.setForeground(Color.WHITE);
-        comenzar.setFont(new Font("Arial", Font.BOLD, 14));
+        comenzar.setFont(new Font("Arial", Font.BOLD, fontSize));
 
         this.add(comenzar, BorderLayout.SOUTH);
 
@@ -33,6 +36,16 @@ public class ConfiguracionVista extends JFrame {
 
     public void abrirVentana() {
         this.setVisible(true);
+    }
+
+    public void setFontSize(int size) {
+        fontSize = size;
+        infoPanel.setFontSize(size);
+        comenzar.setFont(new Font("Arial", Font.BOLD, size));
+    }
+
+    public Integer getFontSize() {
+        return infoPanel.getFontSize();
     }
 
     public void cerrarVentana() {
@@ -105,6 +118,13 @@ public class ConfiguracionVista extends JFrame {
         private JTextField nombreText;
         private JComboBox<String> menuDesplegable;
         private JTextField saldoText;
+        private JTextField size; 
+        private int fontSize = 14;
+
+        private JLabel nombre;
+        private JLabel tematica;
+        private JLabel saldo;
+        private JLabel fuente;
 
         public InfoPanel() {
             this.setBackground(new Color(255, 255, 255, 0));
@@ -116,31 +136,37 @@ public class ConfiguracionVista extends JFrame {
             this.add(empty);
 
             JPanel panel = new JPanel();
-            panel.setLayout(new GridLayout(5, 2));
+            panel.setLayout(new GridLayout(7, 2));
             panel.setBackground(new Color(0, 0, 0, 0));
 
-            JLabel nombre = new JLabel("Nombre:");
-            nombre.setFont(new Font("Arial", Font.BOLD, 14));
+            nombre = new JLabel("Nombre:");
+            nombre.setFont(new Font("Arial", Font.BOLD, fontSize));
             nombre.setForeground(Color.BLACK);
 
             nombreText = new JTextField();
             nombreText.setPreferredSize(new Dimension(200, 30));
 
-            JLabel tematica = new JLabel("Tematica:");
-            tematica.setFont(new Font("Arial", Font.BOLD, 14));
+            tematica = new JLabel("Tematica:");
+            tematica.setFont(new Font("Arial", Font.BOLD, fontSize));
             tematica.setForeground(Color.BLACK);
 
             menuDesplegable = new JComboBox<>();
             menuDesplegable.addItem("Frutas");
-            menuDesplegable.addItem("Coches");
-            menuDesplegable.addItem("Jotas");
+            menuDesplegable.addItem("Horoscopo");
+            menuDesplegable.addItem("Dioses");
 
-            JLabel saldo = new JLabel("Saldo:");
-            saldo.setFont(new Font("Arial", Font.BOLD, 14));
+            saldo = new JLabel("Saldo:");
+            saldo.setFont(new Font("Arial", Font.BOLD, fontSize));
             saldo.setForeground(Color.BLACK);
 
             saldoText = new JTextField("0");
             saldoText.setPreferredSize(new Dimension(200, 30));
+
+            fuente = new JLabel("Tamaño de la fuente:");
+            fuente.setFont(new Font("Arial", Font.BOLD, fontSize));
+            fuente.setForeground(Color.BLACK);
+            size = new JTextField("14");
+            size.setPreferredSize(new Dimension(200, 30));
 
             panel.add(nombre);
             panel.add(nombreText);
@@ -152,6 +178,10 @@ public class ConfiguracionVista extends JFrame {
             panel.add(new JLabel(""));
             panel.add(saldo);
             panel.add(saldoText);
+            panel.add(new JLabel(""));
+            panel.add(new JLabel(""));
+            panel.add(fuente);
+            panel.add(size);
 
             this.add(panel);
         }
@@ -160,18 +190,24 @@ public class ConfiguracionVista extends JFrame {
             return nombreText.getText();
         }
 
+        public void setFontSize(int size) {
+            fontSize = size;
+            nombre.setFont(new Font("Arial", Font.BOLD, size));
+            tematica.setFont(new Font("Arial", Font.BOLD, size));
+            saldo.setFont(new Font("Arial", Font.BOLD, size));
+            fuente.setFont(new Font("Arial", Font.BOLD, size));
+        }
+
+        public Integer getFontSize() {
+            return Integer.parseInt(size.getText());
+        }
+
         public String getTematica() {
             return (String) menuDesplegable.getSelectedItem();
         }
 
         public int getSaldo() {
             return Integer.parseInt(saldoText.getText());
-        }
-
-        public void setActionListener(ActionListener a) {
-            nombreText.addActionListener(a);
-            menuDesplegable.addActionListener(a);
-            saldoText.addActionListener(a);
         }
 
         @Override

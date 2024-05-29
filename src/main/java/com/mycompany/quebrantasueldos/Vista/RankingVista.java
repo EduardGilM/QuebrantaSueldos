@@ -16,6 +16,7 @@ public class RankingVista extends JFrame {
     private QuebrantaSueldosModelo modelo;
     private TragaPerrasMenuBar menu;
     private JButton reply;
+    private Integer fontSize = 20;
 
     public RankingVista(QuebrantaSueldosModelo model) {
         super("Ranking");
@@ -39,6 +40,12 @@ public class RankingVista extends JFrame {
         reply.setBorder(new LineBorder(Color.BLACK, 3));
         reply.setFont(new Font("Arial", Font.BOLD, 24));
         this.add(reply, BorderLayout.SOUTH);
+    }
+
+    public void setFontSize(int size) {
+        fontSize = size;
+        infoRanking.setFontSize(size);
+        reply.setFont(new Font("Arial", Font.BOLD, fontSize));
     }
 
     public void setActionListener(ActionListener actionListener) {
@@ -79,6 +86,8 @@ public class RankingVista extends JFrame {
 
     public class InfoRanking extends JPanel {
 
+        private Integer fontSize = 20;
+
         private QuebrantaSueldosModelo model;
         public InfoRanking(QuebrantaSueldosModelo model) {
             this.model = model;
@@ -106,6 +115,16 @@ public class RankingVista extends JFrame {
                 this.add(label);
                 this.add(Box.createVerticalStrut(10));
                 count++;
+            }
+        }
+
+        public void setFontSize(int size) {
+            fontSize = size;
+            for (Component component : this.getComponents()) {
+                if (component instanceof JLabel) {
+                    JLabel label = (JLabel) component;
+                    label.setFont(new Font("Impact", Font.PLAIN, fontSize));
+                }
             }
         }
 

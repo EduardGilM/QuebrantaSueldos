@@ -99,9 +99,19 @@ public class QuebrantaSueldosVista extends JFrame {
     public void finPartida() {
         JOptionPane.showMessageDialog(this, "Te has quedado sin saldo. Fin de la partida", "Fin Partida", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    public void setFontSize(int size) {
+        configuracion.setFontSize(size);
+        ayuda.setFontSize(size);
+        ranking.setFontSize(size);
+        juegoVista.setFontSize(size);
+    }
     
     //Funciones de Configuración
 
+    public Integer getFontSize() {
+        return configuracion.getFontSize();
+    }
 
     public void abrirVentanaConfiguracion(){
         configuracion.abrirVentana();

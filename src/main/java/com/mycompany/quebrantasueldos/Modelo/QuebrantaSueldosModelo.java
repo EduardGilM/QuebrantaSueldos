@@ -16,6 +16,9 @@ public class QuebrantaSueldosModelo {
     
     private BufferedImage imagen1, imagen2, imagen3;
     private String[] nombres = {"assets/imagen_00.jpg", "assets/imagen_01.jpg", "assets/imagen_02.jpg", "assets/imagen_03.jpg","assets/imagen_04.jpg","assets/imagen_05.jpg","assets/imagen_06.jpg"}; 
+    private String[][] tematicas = {{"assets/imagen_00.jpg", "assets/imagen_01.jpg", "assets/imagen_02.jpg", "assets/imagen_03.jpg","assets/imagen_04.jpg","assets/imagen_05.jpg","assets/imagen_06.jpg"},
+    {"assets/imagen_horoscopo_01", "assets/imagen_horoscopo_02.jpg", "assets/imagen_horoscopo_03.jpg", "assets/imagen_horoscopo_04.jpg","assets/imagen_horoscopo_05.jpg","assets/imagen_05.jpg","assets/imagen_06.jpg"},
+    {"assets/imagen_dioses_01.jpg", "assets/imagen_dioses_02.jpg", "assets/imagen_dioses_03.jpg", "assets/imagen_dioses_04.jpg","assets/imagen_dioses_05.jpg","assets/imagen_05.jpg","assets/imagen_06.jpg"}};
     private int nrand1, nrand2, nrand3;
     private int saldo;
     private int puntuacion;
@@ -51,8 +54,30 @@ public class QuebrantaSueldosModelo {
 
     public void setTematica(String tematica){
         this.tematica = tematica;
+
+        if (tematica == "Frutas") {
+            nombres = tematicas[0];
+        } else if (tematica == "Horoscopo") {
+            nombres = tematicas[1];
+        } else if (tematica == "Dioses") {
+            nombres = tematicas[2];
+        }
     }
 
+    public void setNewImages() {
+        nrand1 = (int) (Math.random() * 7);
+        nrand2 = (int) (Math.random() * 7);
+        nrand3 = (int) (Math.random() * 7);
+        try {
+            imagen1 = ImageIO.read(new File(nombres[nrand1]));
+            imagen2 = ImageIO.read(new File(nombres[nrand2]));
+            imagen3 = ImageIO.read(new File(nombres[nrand3]));
+        }
+        catch (IOException e) {
+            System.out.println("Problemas leyendo la imagen .");
+            System.out.println("Motivo: " + e.getLocalizedMessage());
+        }
+    }
     
     public BufferedImage getImagen(int i) {
         switch(i) {

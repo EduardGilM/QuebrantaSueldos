@@ -17,6 +17,7 @@ public class JuegoVista extends JFrame{
     private TragaPerrasMenuBar menu;
     private TirarPanel tirarPanel;
     private InfoJuego infoJuego;
+    private Integer fontSize = 20;
 
 
     QuebrantaSueldosModelo model;
@@ -42,6 +43,12 @@ public class JuegoVista extends JFrame{
         
         
         this.setVisible(false);
+    }
+
+    public void setFontSize(int size){
+        fontSize = size;
+        estadoPanel.setFontSize(size);
+        infoJuego.setFontSize(size);
     }
 
     //Juego
@@ -113,6 +120,8 @@ public class JuegoVista extends JFrame{
     
     public class InfoJuego extends JPanel {
         QuebrantaSueldosModelo model;
+        private Integer fontSize = 20;
+
         public InfoJuego(QuebrantaSueldosModelo modelo) {
             this.setLayout(new GridLayout(1,1));
             this.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -121,6 +130,11 @@ public class JuegoVista extends JFrame{
             tirarPanel = new TirarPanel(model);
             
             this.add(tirarPanel);
+        }
+
+        public void setFontSize(int size){
+            fontSize = size;
+            tirarPanel.setFontSize(size);
         }
 
         @Override

@@ -20,6 +20,7 @@ public class TirarPanel extends JPanel{
     JButton jugar;
     ImagenPanel imagen1, imagen2, imagen3;
     JPanel pan, pan2, pan3;
+    private Integer fontSize = 20;
 
     QuebrantaSueldosModelo model;
 
@@ -50,6 +51,11 @@ public class TirarPanel extends JPanel{
         jugar.setFont(new Font("Arial", Font.BOLD, 24));
         this.add(jugar, BorderLayout.SOUTH);
 
+    }
+
+    public void setFontSize(int size){
+        fontSize = size;
+        jugar.setFont(new Font("Arial", Font.BOLD, fontSize));
     }
 
     public void RepintarPanel1(){
